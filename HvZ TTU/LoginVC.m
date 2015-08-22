@@ -64,25 +64,25 @@
     //NSLog(@"username: %@ password: %@",userName.text,password.text);
     [PFUser logInWithUsernameInBackground:userName.text password:password.text block:^(PFUser *user, NSError *error) {
         if(!error){
-//            if([[[PFUser currentUser] objectForKey:@"approved"]isEqual: @(YES)]){
+            if([[[PFUser currentUser] objectForKey:@"approved"]isEqual: @(YES)]){
                 [self performSegueWithIdentifier:@"gotoHome" sender:self];
-//            } else {
-//                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Login Error"
-//                                                                  message:@"You are not approved yet."
-//                                                                 delegate:nil
-//                                                        cancelButtonTitle:@"OK"
-//                                                        otherButtonTitles:nil];
-//                [message show];
-//            }
+            } else {
+                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Login Error"
+                                                                  message:@"You are not approved yet."
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"OK"
+                                                        otherButtonTitles:nil];
+                [message show];
+            }
         }
-//        else{
-//            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Login Error"
-//                                                              message:@"There was an error logging in."
-//                                                             delegate:nil
-//                                                    cancelButtonTitle:@"OK"
-//                                                    otherButtonTitles:nil];
-//            [message show];
-//        }
+        else{
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Login Error"
+                                                              message:@"There was an error logging in."
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            [message show];
+        }
     }];
         
 }
